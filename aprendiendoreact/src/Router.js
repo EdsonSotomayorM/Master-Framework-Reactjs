@@ -5,13 +5,14 @@ import {BrowserRouter, Route, Routes, useParams} from 'react-router-dom'; // In 
 
 
 import MiComponente from './components/MiComponente';
-//import Peliculas from './components/Peliculas';
+import Peliculas from './components/Peliculas';
 import Error from './components/Error';
 import Header from "./components/Header";
 
 import Footer from "./components/Footer";
 import Home from "./components/Home";
 import Blog from "./components/Blog";
+import Formulario from "./components/Formulario";
 
 class Router extends Component {
 
@@ -35,15 +36,15 @@ class Router extends Component {
             <BrowserRouter>
                 <Header />
 
-
-
-                
-
                  {/** Configurar Rutas y paginas */}
                 <Routes>
                     <Route exact path="/" element={<Home />} />
                     <Route exact path="/home" element={<Home />} />
                     <Route exact path = "/blog" element = {<Blog />} /> {/** Components => elements  And Decaration Components is whit <component/> */}
+                    <Route exact path = "/formulario" element = {<Formulario />} /> 
+                    <Route exact path = "/peliculas" element = {<Peliculas />} /> 
+
+
                     <Route exact path = "/segunda-ruta" element = {<MiComponente />} />
                     <Route path ="*" element = {<Error />} />
                     {/**Mas opciones de rutas */}

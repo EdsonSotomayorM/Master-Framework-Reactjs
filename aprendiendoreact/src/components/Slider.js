@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class Slider extends Component {
 
     render() {
-        console.log(this.props);
+
         return (
             
             <div id="slider" className={this.props.size}>
