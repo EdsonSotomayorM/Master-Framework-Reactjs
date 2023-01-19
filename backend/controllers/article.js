@@ -83,7 +83,7 @@ var controller =  {
 
         var last = req.params.last;
         if(last || last != undefined){
-            query.limit(5);
+            query.limit(3);
         }
 
 

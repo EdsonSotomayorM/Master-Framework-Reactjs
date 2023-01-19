@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {BrowserRouter, Route, Routes, useParams} from 'react-router-dom'; // In react-router-dom Switch => Routes 
+import { BrowserRouter, Routes, Route, useParams,Navigate  } from "react-router-dom";// In react-router-dom Switch => Routes 
 
 
 
@@ -13,11 +13,14 @@ import Footer from "./components/Footer";
 import Home from "./components/Home";
 import Blog from "./components/Blog";
 import Formulario from "./components/Formulario";
-
+import Search from './components/Search';
+import Article from './components/Article';
+import CreateArticle from './components/CreateArticle';
+ 
 class Router extends Component {
 
     render() {
-        function PruebaParametros (){
+        /*function PruebaParametros (){
              let params = useParams();
              let {apellidos} = useParams(); //Primera forma de declarar
 
@@ -25,13 +28,18 @@ class Router extends Component {
 
              return (
                 <div>
-                    <h2 className='subheader'>{params.nombre} {apellidos}</h2> {/** Segunda forma de declarar */} 
-                    {sinApellidos}
+                    <h2 className='subheader'>{params.nombre} {apellidos}</h2> {/** Segunda forma de declarar *///} 
+                    /*{sinApellidos}
                 </div>
              );
-        }
+        }*/
+        function GetParamsRedirect(){
 
+            let params = useParams();
 
+            return (<Navigate to={'/blog/busqueda/'+params.search} />)
+
+        };
         return (
             <BrowserRouter>
                 <Header />
@@ -40,10 +48,14 @@ class Router extends Component {
                 <Routes>
                     <Route exact path="/" element={<Home />} />
                     <Route exact path="/home" element={<Home />} />
+                    <Route exact path="blog/articulo/:id" element={< Article />}/>
+                    <Route exact path="blog/crear" element={< CreateArticle />}/>
                     <Route exact path = "/blog" element = {<Blog />} /> {/** Components => elements  And Decaration Components is whit <component/> */}
                     <Route exact path = "/formulario" element = {<Formulario />} /> 
                     <Route exact path = "/peliculas" element = {<Peliculas />} /> 
+                    <Route exact path = "/blog/busqueda/:search" element = {<Search />} /> 
 
+                    <Route exact path="/redirect/:search" element={<GetParamsRedirect/>} />
 
                     <Route exact path = "/segunda-ruta" element = {<MiComponente />} />
                     <Route path ="*" element = {<Error />} />
@@ -54,8 +66,7 @@ class Router extends Component {
                         </div>
                         
                     } />
-                    <Route exact path ="/pruebas/:nombre" element = {<PruebaParametros/>}/>
-                    <Route exact path ="/pruebas/:nombre/:apellidos" element = {<PruebaParametros/>}/>
+                 
                 </Routes>
 
                
